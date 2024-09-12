@@ -20,12 +20,38 @@ namespace ExceptionHandlingExercise
             //TODO START HERE:
 
             // 1) Create an char[], it must contain 6 numbers and 3 letters - name it arr
-            
+
+            Char[] arr = new char[] { '1', '2', '3', 'A', 'K', 'L' };
+
             // 2) Create a list called numbers that will hold integers
-        
+
+            List<int> numbers = new List<int> ();
+
             // 3) Create an string variable with an empty string initializer - name it str
+
+            var str = ""; 
             
-            // 4) Make a foreach loop to iterate through your character array            
+            // 4) Make a foreach loop to iterate through your character array
+            // 
+            foreach (char character in arr)
+            {
+                try
+                {
+                    str = character.ToString();
+                    int num = int.Parse(str);
+                    numbers.Add(num);
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine($"Unable to Parse '{character}'");
+                }
+            }
+
+            Console.WriteLine("Parsed Integers");
+            foreach (var num in numbers)
+            {
+                Console.WriteLine(num);
+            }
                 // 5) Create a try-catch inide of your foreach loop
                     // 6) Inside the try block: 
                         // 7) Set your string variable to each array element in your char[] to .ToString()
@@ -35,13 +61,6 @@ namespace ExceptionHandlingExercise
                    // 10) Inside the catch block:
                        // 11) In the scope of your catch you can use the following code:                  
                        // Console.WriteLine($"Unable to Parse '{character}'"); //character will be the name of each item in your collection
-                
-            
-            // Uncomment the code below to see the numbers you successfully added to the numbers list: 
-            //foreach (var num in numbers)
-            //{
-            //    Console.WriteLine(num);
-            //}
         }
     }
 }
